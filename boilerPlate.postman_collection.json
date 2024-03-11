@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "ec5753bc-cbac-4510-aa41-dd613c5ce400",
+		"name": "boilerPlate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32622151"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"ramentusuka@gmail.com\",\r\n    \"firstName\":\"Ramen\",\r\n    \"lastName\":\"Tusuka\",\r\n    \"mobile\":\"01406789396\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5090/api/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5090",
+					"path": [
+						"api",
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"ramen@biswas.com\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5090/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5090",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserProfileDetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAyMTM4NzEsImRhdGEiOiJyYW1lbkBiaXN3YXMuY29tIiwiaWF0IjoxNzEwMTI3NDcxfQ.aEnik-0MBeibe1tovRB729NmmV_NF7IEi_p2M4Cw47g",
+						"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAyMTM4NzEsImRhdGEiOiJyYW1lbkBiaXN3YXMuY29tIiwiaWF0IjoxNzEwMTI3NDcxfQ.aEnik-0MBeibe1tovRB729NmmV_NF7IEi_p2M4Cw47g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"ramen@biswas.com\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5090/api/profileDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5090",
+					"path": [
+						"api",
+						"profileDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProfileUpdate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAyMTM4NzEsImRhdGEiOiJyYW1lbkBiaXN3YXMuY29tIiwiaWF0IjoxNzEwMTI3NDcxfQ.aEnik-0MBeibe1tovRB729NmmV_NF7IEi_p2M4Cw47g",
+						"description": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAyMTM4NzEsImRhdGEiOiJyYW1lbkBiaXN3YXMuY29tIiwiaWF0IjoxNzEwMTI3NDcxfQ.aEnik-0MBeibe1tovRB729NmmV_NF7IEi_p2M4Cw47g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mobile\": \"01406789393\",\r\n    \"password\": \"12345#@321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5090/api/profileUpdate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5090",
+					"path": [
+						"api",
+						"profileUpdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RecoverVerifyEmail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5090/api/RecoverVerifyEmail/ramentusuka@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5090",
+					"path": [
+						"api",
+						"RecoverVerifyEmail",
+						"ramentusuka@gmail.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RecoverVerifyOTP",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RecoverResetPass",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RecoverResetPass",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:5090/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTAyMTM4NzEsImRhdGEiOiJyYW1lbkBiaXN3YXMuY29tIiwiaWF0IjoxNzEwMTI3NDcxfQ.aEnik-0MBeibe1tovRB729NmmV_NF7IEi_p2M4Cw47g",
+			"type": "string"
+		}
+	]
+}

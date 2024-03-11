@@ -1,0 +1,19 @@
+01. File Folder Creation
+02. Package Installation{
+    npm i express
+    npm i cors
+    npm i jsonwebtoken
+    npm i mongoose
+    npm i nodemailer
+    npm i nodemon
+    npm i express-rate-limit
+    npm i hpp
+    npm i helmet
+}
+03. App.js Configuration
+04. Users Model Creation
+05. Tasks Model Creation
+06. OPT Model Creation
+07. Email Utility Creation.
+08. Users Controller
+09. 

@@ -67,10 +67,10 @@ exports.verifyEmail=async (req,res)=>{
         if(user.length>0){
             //Send Email
             let otp=Math.floor(100000+Math.random()*900000);
-            console.log(email);
-            SendEmailUtility(email,'Your PIN=${otp}', "MERN 5 Task Manager Code.");
-            
+            await SendEmailUtility(email,`Your PIN=${otp}`, "MERN 5 Task Manager Code.");
+            console.log("test-1")
             await OTPModel.create({email:email, otp:otp,status:'Active'})
+            console.log("test-2")
             res.json({status:"success",message:"Verification code has been sent to your Email."})
         }else{
             res.json({status:"Failed",message:"No User Found."});

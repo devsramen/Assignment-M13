@@ -1,11 +1,12 @@
 const mongoose=require('mongoose');
 
 const DatabaseSchema=mongoose.Schema({
-    title:{type:String, unique:true, require:true},
+    email:{type:String, require:true},
+    title:{type:String, require:true},
     description:{type:String, require:true},
     status:{type:String, require:true}
 }, {timestamps:true, versionKey:false});
 
-const TasksModdle=mongoose.model('tasks', DatabaseSchema);
+const TasksModel=mongoose.model('tasks', DatabaseSchema);
 
-module.exports=TasksModdle;
+module.exports=TasksModel;

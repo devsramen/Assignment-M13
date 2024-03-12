@@ -1,5 +1,6 @@
 const express = require('express');
 const UserController=require('../controllers/UserController');
+const TaskController=require('../controllers/TaskController');
 const AuthMiddleware = require('../middlewares/AuthMiddleware')
 const router = express.Router();
 
@@ -15,6 +16,12 @@ router.get('/RecoverResetPass/:email/:otp/:password',UserController.passwordRese
 //After login
 router.get('/profileDetails',AuthMiddleware,UserController.profileDetails);
 router.post('/profileUpdate',AuthMiddleware,UserController.profileUpdate);
+
+// Task Createation
+router.post('/task/create',AuthMiddleware,TaskController.create);
+router.post('/task/update/:id',AuthMiddleware,TaskController.update);
+router.get('/task/read',AuthMiddleware,TaskController.read);
+router.delete('/task/delete/:id',AuthMiddleware,TaskController.delete);
 
 
 module.exports=router;

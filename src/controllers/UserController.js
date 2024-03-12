@@ -3,7 +3,7 @@ const OTPModel=require('../models/OTPModel');
 const jwt=require('jsonwebtoken');
 const SendEmailUtility=require('../utlity/SendEmailUtility');
 
-
+//Registration
 exports.registration=async (req,res)=>{
     try{
         let reqBody=req.body;
@@ -14,7 +14,7 @@ exports.registration=async (req,res)=>{
     }    
 }
 
-
+//Login
 exports.login=async (req,res)=>{
     try{
         let reqBody=req.body;
@@ -35,7 +35,7 @@ exports.login=async (req,res)=>{
     }
 }
 
-
+//ProfileDetails
 exports.profileDetails=async (req,res)=>{
     try{
         let email=req.headers['email'];
@@ -47,7 +47,7 @@ exports.profileDetails=async (req,res)=>{
     }
 }
 
-
+//ProfileUpdate
 exports.profileUpdate=async (req,res)=>{
     try{
         let email=req.headers['email'];
@@ -58,9 +58,6 @@ exports.profileUpdate=async (req,res)=>{
         res.json({status:"Failed", message:err})
     }
 }
-
-
-
 
 //Mail Verification
 exports.verifyEmail=async (req,res)=>{
@@ -84,7 +81,7 @@ exports.verifyEmail=async (req,res)=>{
 }
 
 
-
+//VerifyOTP
 exports.verifyOTP=async (req,res)=>{
     try{
         const {email}=req.params;
@@ -101,9 +98,18 @@ exports.verifyOTP=async (req,res)=>{
     }
 }
 
-
-exports.passwordReset=(req,res)=>{
-
-
-
+//PasswordReset
+exports.passwordReset=async (req,res)=>{
+    try{
+        const {email,otp,password}=req.params;
+        let user = await OTPModel.find({email:email,otp:otp,status:'verified'})
+        if(user.length>0){
+            await OTPModel.deleteOne({email:email}, {password:password});
+            req.json({status:"success",message:"Password Update Success"})
+        }else{
+            res.json({status:'Fail', message:"Invelide Request"})
+        }
+    }catch(err){
+        res.json({status:"fail",message:err})
+    }
 }

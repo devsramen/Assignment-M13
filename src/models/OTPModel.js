@@ -6,6 +6,6 @@ const DatabaseSchema=mongoose.Schema({
     status:{type:String, require:true}
 }, {timestamps:true, versionKey:false});
 
-const OTPModel=mongoose.model('tasks', DatabaseSchema);
+const OTPModel=mongoose.model('otps', DatabaseSchema);
 
 module.exports=OTPModel;

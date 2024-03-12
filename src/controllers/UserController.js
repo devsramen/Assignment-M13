@@ -62,7 +62,7 @@ exports.profileUpdate=async (req,res)=>{
 
 
 
-
+//Mail Verification
 exports.verifyEmail=async (req,res)=>{
     try{
         const {email}=req.params;
@@ -70,40 +70,35 @@ exports.verifyEmail=async (req,res)=>{
         if(user.length>0){
             //Send Email
             let otp=Math.floor(100000+Math.random()*900000);
+            console.log(email);
             SendEmailUtility(email,'Your PIN=${otp}', "MERN 5 Task Manager Code.");
             
             await OTPModel.create({email:email, otp:otp,status:'Active'})
             res.json({status:"success",message:"Verification code has been sent to your Email."})
+        }else{
+            res.json({status:"Failed",message:"No User Found."});
         }
     }catch(err){
         res.json({status:"fail",message:err})
     }
-
-
-
-
-
-    /*
-    try{
-        let reqBody=req.body;
-        
-        if(user.length>0){
-            // Send Email
-        }else{
-            res.json({status:"Failed",message:"No User Found."})
-        }
-    }catch(err){
-        
-    }
-    */
 }
 
 
 
-exports.verifyOTP=(req,res)=>{
-
-
-
+exports.verifyOTP=async (req,res)=>{
+    try{
+        const {email}=req.params;
+        let user = await UsersModel.find({email:email, otp:otp,status:'Active'});
+        if(user.length>0){
+            //Send Email
+            await OTPModel.updateOne({email:email, otp:otp},{status:'Verified'})
+            res.json({status:"success",message:"Verification code has been sent to your Email."})
+        }else{
+            res.json({status:"Failed",message:"Invalied Code"});
+        }
+    }catch(err){
+        res.json({status:"fail",message:err})
+    }
 }
 
 
